@@ -1,31 +1,37 @@
-
 <?php
-/*$connection = pg_connect ('host=localhost port=5432 dbname=infothales user=postgres password=1604sab')
-  or die ("Connection impossible avec PostGres -->" .pg_last_error($conn));*/
+session_start();
 
-/*  $pdo = new PDO('pgsql:host=localhost; port=5432; dbname=infothales; user=postgres; password=1604sab');
-  sleep(5);
-  $stmt = $pdo->prepare('SELECT * FROM obs_temporaire')
-  $stmt->execute();
-  $pdo = null;
-  sleep(60);*/
-function connectBdd(){
+	include_once('./connexion_bdd.php');
 
-$host_bdd='localhost';
-$name_bdd='manipulationbdd';
-$user_bdd='root';
-$pass_bdd='';
+	if (isset($_COOKIE["identifiant"]) && isset($_COOKIE["matricule"])){
+		$utilisateur = $_COOKIE["identifiant"];
+		$pass = $_COOKIE["matricule"];
+	}
+	else{
+		$utilisateur=$_POST["identifiant"];
+		$pass=$_POST["matricule"];
+	}
 
-  try{
-    /*$bdd = new PDO ("pgsql:host=".$host_bdd.";dbname=".$name_bdd."", "".$user_bdd."", "".$pass_bdd."") or die(print_r($bdd->errorInfo()));*/
-    $bdd = new PDO ("mysql:host=".$host_bdd.";dbname=".$name_bdd.", ".$user_bdd., .$pass_bdd."") or die(print_r($bdd->errorInfo()));
-$bdd->exec("SET NAMES utf8");
-$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-  }
-  catch(Exeption $e){
-   die("Erreur!".$e->getMessage());
-  }
-  
+	try{
+	$bdd = new PDO('mysql:host='.$host.';dbname='.$database, $user, $password);
+	}
+	catch(Exception $e){
+		echo '<script>alert("Problème de connexion à la BDD")</script>';
+		echo '<script>window.location.replace("./index.html");</script>';
+	}
+
+	$req = $bdd->prepare('SELECT utilisateur,pass FROM manipulationbdd_user WHERE utilisateur = :utilisateur');
+	$req->execute(array(
+		'utilisateur' => $utilisateur));	$req = $req->fetch();
+
+	if ($password == $resultat['matricule']) {
+	session_start();
+	$_SESSION['identifiant'] = $utilisateur;
+	setcookie('identifiant', $utilisateur);
+	setcookie('matricule', $password);
+	echo '<script>window.location.replace("./accueil.php");</script>';
+
 }
 
- ?>
+
+?>
