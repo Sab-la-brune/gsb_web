@@ -1,6 +1,6 @@
 <?php
-//session_start();
-//include('test_connect.php');
+include('test_connect.php');
+//include('liste_affichage.php');
 ?>
 
 
@@ -25,113 +25,80 @@
 
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700">
+
 
 
 
 </head>
 
-<!-- Contenu du site -->
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<body onload="">
 
-	<div class="site-wrap"  id="accueil">
-
-		<!-- Barre de navigation pour mobile-->
-		<div class="site-mobile-menu site-navbar-target">
-			<div class="site-mobile-menu-header">
-				<div class="site-mobile-menu-close mt-3">
-					<span class="icon-close2 js-menu-toggle"></span>
-				</div>
-			</div>
-			<div class="site-mobile-menu-body"></div>
-		</div>
-		<!--	<div class="col-12 col-md-10 main-menu">-->
-		<nav class="site-navigation position-relative text-right" role="navigation">
-			<div class="navbar-header">
-				<img src="img/logo.jpg"/>
-			</div>
-
-			<!-- zone de recherche-->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<div class="col-sm-3 col-md-3">
-					<form class="navbar-form" role="search">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Rechercher un praticien">
-							<div class="input-group-btn">
-								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-							</div>
-						</div>
-					</form>
-				</div>
-				<!-- Fin zone de recherche-->
-				<ul class="nav navbar-nav">
-					<li><a href="ajout.php" class="nav-link">Ajouter un praticien</a></li>
-					<li><input type="submit" class="fadeIn fourth" value="Déconnexion"></li>
-				</ul>
-			</nav>
+  <!-- En-tête du site -->
+    <div class="container d-none d-lg-block">
+      <div class="row">
+        <div class="col-12 text-center mb-4 mt-5">
+            <h2 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">Liste de praticiens<span class="text-primary"></span> </a></h2>
+            </div>
+            <div class="col sm-3"><?php echo "<br>SESSION DE : ".$_SESSION['identifiant']."<br><br>"; ?></div>
+            <div class="col sm-9 text-right"><input type="button" class="fadeIn fourth" value="Déconnexion" href="deconnexion.php"></div>
+        </div>
+      </div>
+    </div>
 
 
 
-			<div class="col-6 col-md-6 d-inline-block d-lg-none ml-md-0" ><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+  <!-- Contenu du site -->
+  <section class="site-section bg-light">
+
+    <div class="container">
+      <div class="row">
+        <table class="table table-striped table-bordered table-hover">
+          <form method="post" action="accueil.php" >
+            <thead class="bg-black text-white">
+              <tr>
+                <th scope="col" >Nom<div class="mt-10">
+                  <input type="text" name="nom" placeholder="Nom" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nom'"  class="single-input" value"">
+                </div></th>
+                <th scope="col">Prenom<div class="mt-10">
+                  <input type="text" name="prenom" placeholder="Prenom" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Prenom'"  class="single-input">
+                </div></th>
+                <th scope="col">Adresse<div class="mt-10">
+                  <input type="text" name="adresse" placeholder="Adresse" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adresse'"  class="single-input">
+                </div></th>
+                <th scope="col">Departement<div class="mt-10">
+                  <input type="text" name="departement" placeholder="Département" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Département'" class="single-input">
+                </div></th>
+                <th scope="col">Ville<div class="mt-10">
+                  <input type="text" name="ville" placeholder="Ville" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ville'"  class="single-input">
+                </div></th>
+                <th scope="col">Specialités<div class="mt-10">
+                  <input type="text" name="specialites" placeholder="Spécialités" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Spécialités'"  class="single-input">
+                </div></th>
+              </tr>
+            </thead>
+            <div class="col sm-9 text-right"><input type="button" class="fadeIn fourth" value="Rechercher" href=""></div>
+
+          </form>
+
+          <tbody>
 
 
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-			<!-- Section 1 - couverture -->
-			<section class="site-section bg-light" id="presentation">
-				<div class="container">
-					<div class="row mb-5">
-						<div class="col-12 text-center">
-							<!-- Les lignes en alternance (table-striped), tableaux encadrés (table-bordered)
-							et survol des lignes (table-hover)-->
-							<h2 class="section-title mb-3">Résultat de la recherche </h2>
-							<table class="table table-striped table-bordered table-hover">
-								<thead>
-									<tr>
-										<th>Spécialité</th>
-										<th>Nom</th>
-										<th>Prénom</th>
-										<th>Adresse</th>
-										<th>Tél</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1</td>
-										<td>La nuit</td>
-										<td>Bidule</td>
-										<td>234</td>
-										<td>02 96 84 23 98</td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>L'aube</td>
-										<td>Truc</td>
-										<td>194</td>
-										<td>02 96 84 23 98</td>
-									</tr>
-									<tr>
-										<td>3</td>
-										<td>Le jour</td>
-										<td>Machin</td>
-										<td>334</td>
-										<td>02 96 84 23 98</td>
-									</tr>
-									<tr>
-										<td>4</td>
-										<td>Le crépuscule</td>
-										<td>Tartempion</td>
-										<td>234</td>
-										<td>02 96 84 23 98</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
+    <div class="container">
+      <div class="row d-flex pt-50">
+        <div class="d-flex justify-content-between col-lg-12">
+          <input type="submit" class="fadeIn fourth" value="Ajouter un praticien" href=""></div>
+        </div>
+      </div>
+    </div>
 
+  </section>
 
-			</div>
-		</div>
-	</section>
 
 
 
