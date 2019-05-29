@@ -5,9 +5,11 @@ if(!isset($_SESSION))
 {
 	session_start();
 }
+// Suppression des variables de session et de la session
 $_SESSION = array();
 unset($_SESSION["identifiant"]);
 unset($_SESSION["matricule"]);
+//Suppression des cookies de connexion automatique
 setcookie("identifiant", "", 1);
 setcookie("matricule", "", 1);
 session_destroy();

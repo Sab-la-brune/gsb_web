@@ -1,6 +1,6 @@
 <?php
 include('test_connect.php');
-include('liste_affichage.php');
+include('liste_praticien.php');
 ?>
 
 
@@ -38,7 +38,7 @@ include('liste_affichage.php');
   <div class="container d-none d-lg-block">
     <div class="row">
       <div class="col-12 text-center mb-4 mt-5">
-        <h2 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">Liste de praticiens<span class="text-primary"></span> </a></h2>
+        <h2 class="mb-0 site-logo"><a class="text-black h2 mb-0">Liste de praticiens<span class="text-primary"></span></a></h2>
       </div>
       <form action="deconnexion.php" method="post">
         <span class="col-12">
@@ -59,7 +59,7 @@ include('liste_affichage.php');
 
   <div class="container">
     <div class="row">
-      <table class="table table-striped table-bordered table-hover">
+      <table class="table table-striped border table-hover">
         <form method="post" action="accueil.php" >
           <thead class="bg-black text-white">
             <tr>
@@ -68,9 +68,6 @@ include('liste_affichage.php');
               </div></th>
               <th scope="col">Prenom<div class="mt-10">
                 <input type="text" name="prenom" placeholder="Prenom" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Prenom'"  class="single-input">
-              </div></th>
-              <th scope="col">Departement<div class="mt-10">
-                <input type="text" name="departement" placeholder="Département" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Département'" class="single-input">
               </div></th>
               <th scope="col">Ville<div class="mt-10">
                 <input type="text" name="ville" placeholder="Ville" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ville'"  class="single-input">
@@ -87,7 +84,7 @@ include('liste_affichage.php');
         <tbody>
           <?php
 
-          affichage($nom,$prenom,$departement,$ville,$specialite);
+          liste_praticien($nom,$prenom,$ville,$specialite);
 
           ?>
         </tbody>
