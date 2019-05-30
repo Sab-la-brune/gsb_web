@@ -1,5 +1,9 @@
 <?php
-//
+/*
+
+par Sabrina Cos
+Dernière modification : 30-05-2019
+*/
 
 //
 if(!empty($_POST)){
@@ -8,14 +12,14 @@ if(!empty($_POST)){
 $nom = htmlspecialchars(trim($_POST['nom'])).'%';
 $prenom = htmlspecialchars(trim($_POST['prenom'])).'%';
 $adresse = htmlspecialchars(trim($_POST['adresse'])).'%';
-$code_post = htmlspecialchars(trim($_POST['cdopost'])).'%';
+$code_post = htmlspecialchars(trim($_POST['codpost'])).'%';
 $ville = htmlspecialchars(trim($_POST['ville'])).'%';
 $specialite = htmlspecialchars(trim($_POST['specialite'])).'%';
 
 //
 function liste_praticien(&$nom,&$prenom,&$adresse,&$code_post,&$ville,&$specialite){
 
-  //Récupération les les données de connexion à la base de donnée
+  //Récupération des informations nécessaire pour la connexion à la base de donnée
   include('connexion_bdd.php');
 
   try{
@@ -28,18 +32,18 @@ function liste_praticien(&$nom,&$prenom,&$adresse,&$code_post,&$ville,&$speciali
   }
 
   //Exécution d'une requête préparée en liant des variables PHP
-  //Requête par nom de praticien rangé par ordre alphabétique et listant 50 praiciens maximum
+  //Requête par nom de praticien rangé par ordre alphabétique et listant 50 praticiens maximum
   $sql = $bdd->prepare("SELECT * FROM praticien where PRA_NOM_PRATICIEN LIKE '%".$_GET["nom"]."%' ORDER BY PRA_NOM_PRATICIEN ASC LIMIT 50");
-    $req->bindParam(':nom',$nom);
-    $req->bindParam(':prenom',$prenom);
-    $req->bindParam(':prenom',$adresse);
-    $req->bindParam(':codpost',$code_post);
-    $req->bindParam(':ville',$ville);
-    $req->bindParam(':specialite',$specialite);
-    $req->execute();
+    $sql->bindParam(':nom',$nom);
+    $sql->bindParam(':prenom',$prenom);
+    $sql->bindParam(':prenom',$adresse);
+    $sql->bindParam(':codpost',$code_post);
+    $sql->bindParam(':ville',$ville);
+    $sql->bindParam(':specialite',$specialite);
+    $sql->execute(array($POST[':nom']));
 
     //Affichage de la liste récupérée par la requête dans le tableau
-    foreach ($req->fetchAll() as $row){
+    foreach ($sql->fetchAll() as $row){
 
       echo "<tr>";
       echo "<td>";

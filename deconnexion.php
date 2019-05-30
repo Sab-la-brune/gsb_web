@@ -1,4 +1,9 @@
 <?php
+/*
+Deconnexion de la session en cours
+par Sabrina Cos
+Dernière modification : 30-05-2019
+*/
 
 include('test_connect.php');
 echo '<meta http-equiv="refresh" content="0.1;url=./index.html"/>';

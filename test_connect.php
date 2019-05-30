@@ -1,6 +1,10 @@
 <?php
-	//Permet de vérifier si l'utilisateur est connecté
+	/*Permet de vérifier si l'utilisateur est connecté
 	//Si ce n'est pas la cas, il est redirigé vers la page de connexion index.html
+	par Sabrina Cos
+	Dernière modification : 30-05-2019
+	*/
+	
 	if(!isset($_SESSION))
 	{
 		//Démarre la session

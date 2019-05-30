@@ -1,5 +1,8 @@
 <?php
-//Page d'accueil suite à la connexion_bdd
+/*Page d'accueil suite à la connexion et l'authentification à la base de donnée
+par Sabrina Cos
+Dernière modification : 30-05-2019
+*/
 
 //Test si une session existe
 include('test_connect.php');
@@ -50,7 +53,7 @@ include('liste_praticien.php');
       <form action="deconnexion.php" method="post">
         <span class="col-12">
           <div class="col sm-3"><?php echo "<br>SESSION DE : ".$_SESSION['identifiant']."<br><br>"; ?></div>
-          <div class="col sm-9 text-right"><input type="submit" class="fadeIn fourth" value="Deconnexion"></div>
+          <div class="col sm-9 text-right"><input type="submit" class="fadeIn fourth" value="Deconnexion" name="deconnexion"></div>
         </span>
       </form>
     </div>
@@ -122,7 +125,7 @@ include('liste_praticien.php');
       <div class="container">
         <div class="row d-flex pt-50">
           <div class="d-flex justify-content-between col-lg-12">
-            <input type="submit" class="fadeIn fourth" value="Ajouter un praticien" href=""></div>
+            <input type="submit" class="fadeIn fourth" value="Ajouter un praticien" href="ajout_praticien.php" name="ajout"></div>
           </div>
         </div>
       </div>

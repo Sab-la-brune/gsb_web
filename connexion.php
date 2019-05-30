@@ -1,5 +1,9 @@
 <?php
-//Contrôle de l'authentification
+/*Contrôle de l'authentification
+par Sabrina Cos
+Dernière modification : 30-05-2019
+*/
+
 
 //Récupération les les données de connexion à la base de donnée
 include('./connexion_bdd.php');
