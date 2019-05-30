@@ -1,7 +1,9 @@
 <?php
-	//Permet de vérifier si l'utilisateur est connecté, s'il ne l'est pas alors il est redirigé vers la page de connexion.
+	//Permet de vérifier si l'utilisateur est connecté
+	//Si ce n'est pas la cas, il est redirigé vers la page de connexion index.html
 	if(!isset($_SESSION))
 	{
+		//Démarre la session
 		session_start();
 	}
 	if (!(isset($_SESSION["identifiant"])))
