@@ -2,7 +2,7 @@
 /*
 Fonction
 par Sabrina Cos
-Dernière modification : 03-06-2019
+Dernière modification : 04-06-2019
 */
 
 //
@@ -31,7 +31,7 @@ function liste_praticien(&$nom){
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // En cas d'erreur, on affiche un message et on arrête tout
   }catch(Exception $e){
-    echo "Problème :".$e->getMessage();
+    echo "Problème".$e->getMessage();
   }
 
   //Exécution d'une requête préparée en liant des variables PHP
@@ -78,9 +78,9 @@ function liste_praticien(&$nom){
     //Termine le traitement de la requête
     $sql->closeCursor();
 
-  }catch(Exception $ex){
+  }catch(Exception $e){
 
-    echo "Erreur ".$ex->getMessage();
+    echo "Problème".$e->getMessage();
 
   }
 }

@@ -9,6 +9,9 @@ include('test_connect.php');
 
 //Appel du fichier permettant l'affichage de la liste de praticiens
 include('liste_praticien.php');
+
+$req_type= $bdd->query("SELECT * FROM type_praticien order by TYP_LIBELLE_TYPE_PRATICIEN asc");
+$donnees_type = $req_type-> fetch();
 ?>
 
 
@@ -72,17 +75,25 @@ include('liste_praticien.php');
             <div class="container">
               <div class="row">
                 <h3>Veuillez renseigner tous les champs</h3>
-                <form method="post" action="ajout_praticien.php">
+                <form method="post" action="add.php">
                   <div class="mt-10">
-                  <input type="text" class="form-control" name="nom" placeholder="Nom du praticien" required><br/>
-                  <input type="text" class="form-control" name="prenom" placeholder="Prénom" required><br/>
-                  <input type="text" class="form-control" name="adresse" placeholder="Adresse" data-bv-regexp-regexp="[0-9]{0,4},\s[A-Za-z\s]{3,98}$" required><br/>
-                  <input type="text" class="form-control" name="codepostal" placeholder="Code Postal" data-bv-regexp-regexp="^[0-9]{5,5}$" maxlength="5" required><br/>
-                  <input type="text" class="form-control" name="ville" placeholder="Ville" required><br/>
-                  <input type="text" class="form-control" name="coef" placeholder="Coefficient" required><br/>
-                  <input type="text" class="form-control" name="Specialité" placeholder="Nom du praticien" required><br/>
-                  <input type="submit" name="enregistrer" value="Envoyer" />
-                </div>
+                    <input type="text" class="form-control" name="nom" placeholder="Nom du praticien" required><br/>
+                    <input type="text" class="form-control" name="prenom" placeholder="Prénom" required><br/>
+                    <input type="text" class="form-control" name="adresse" placeholder="Adresse" data-bv-regexp-regexp="[0-9]{0,4},\s[A-Za-z\s]{3,98}$" required><br/>
+                    <input type="text" class="form-control" name="codepostal" placeholder="Code Postal" data-bv-regexp-regexp="^[0-9]{5,5}$" maxlength="5" required><br/>
+                    <input type="text" class="form-control" name="ville" placeholder="Ville" required><br/>
+                    <input type="text" class="form-control" name="coef" placeholder="Coefficient" required><br/>
+                    <select  name="TYP_CODE" class="form-control" style="max-width:400px;" >
+                      <?php while ($donnees_type = $req_type-> fetch()){ ?>
+                        <option  value="<?php echo $donnees_type['TYP_CODE_TYPE_PRATICIEN']; ?>">
+                          <?php echo $donnees_type['TYP_LIBELLE_TYPE_PRATICIEN']; echo " : "; echo $donnees_type['TYP_LIEU_TYPE_PRATICIEN']; ?>
+                        </option>
+                      <?php } ?>
+                    </select>
+                    <input type="text" class="form-control" name="Specialité" placeholder="Spécialité" required><br/>
+                    <input type="reset" name="annuler" value="Rafraichir"/>
+                    <input type="submit" name="enregistrer" value="Envoyer" />
+                  </div>
                 </form>
               </div>
             </div>
