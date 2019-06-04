@@ -1,7 +1,7 @@
 <?php
 /*Contrôle de l'authentification
 par Sabrina Cos
-Dernière modification : 30-05-2019
+Dernière modification : 03-06-2019
 */
 
 
@@ -14,7 +14,7 @@ include('./connexion_bdd.php');
 
 try{
 //Connexion à la bdd
-	$bdd = new PDO('mysql:host='.$host.';dbname='.$database, $user, $password);
+	$bdd = new PDO('mysql:host='.$host.';dbname='.$database. ';charset=utf8',  $user, $password);
 }
 
 catch(Exception $e){

@@ -105,7 +105,7 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset], input[type=search]  {
+input[type=button], input[type=submit], input[type=reset], input[type=search]   {
   background-color: #5C8ABB;
   border: none;
   color: white;

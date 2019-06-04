@@ -1,13 +1,15 @@
 <?php
 /*
-Fonction
+Php po
 par Sabrina Cos
 Dernière modification : 03-06-2019
 */
 
-//
-if(!empty($_POST)){
-  extract($_POST);
+//Test si une session existe
+include('test_connect.php');
+
+//Récupération les les données de connexion à la base de donnée
+include('./connexion_bdd.php');
 
   $nom = htmlspecialchars(trim($_POST['recherche'])).'%';
   //$prenom = htmlspecialchars(trim($_POST['prenom'])).'%';
@@ -16,14 +18,7 @@ if(!empty($_POST)){
   //$ville = htmlspecialchars(trim($_POST['ville'])).'%';
   //$specialite = htmlspecialchars(trim($_POST['specialite'])).'%';
 }
-else{
-  $nom='%';
-}
-//
-function liste_praticien(&$nom){
 
-  //Récupération des informations nécessaire pour la connexion à la base de donnée
-  include('connexion_bdd.php');
 
   try{
     //Connexion à la bdd
@@ -37,13 +32,8 @@ function liste_praticien(&$nom){
   //Exécution d'une requête préparée en liant des variables PHP
   //Requête par nom de praticien rangé par ordre alphabétique et listant 50 praticiens maximum
   try{
-    $sql = $bdd->prepare("SELECT * FROM praticien, type_praticien where praticien.TYP_CODE_TYPE_PRATICIEN=type_praticien.TYP_CODE_TYPE_PRATICIEN and PRA_NOM_PRATICIEN LIKE :nom ORDER BY :nom ASC LIMIT 50");
+    $sql = $bdd->prepare("SELECT ");
     $sql->bindParam(':nom',$nom);
-    //$sql->bindParam(':prenom',$prenom);
-    //$sql->bindParam(':prenom',$adresse);
-    //$sql->bindParam(':codpost',$code_post);
-    //$sql->bindParam(':ville',$ville);
-    //$sql->bindParam(':specialite',$specialite);
     $sql->execute();
 
     //Affichage de la liste récupérée par la requête dans le tableau
