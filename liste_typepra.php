@@ -6,19 +6,14 @@ Dernière modification : 04-06-2019
 */
 
 //
-if(!empty($_POST)){
-  extract($_POST);
-
   $nom = htmlspecialchars(trim($_POST['recherche'])).'%';
   //$prenom = htmlspecialchars(trim($_POST['prenom'])).'%';
   //$adresse = htmlspecialchars(trim($_POST['adresse'])).'%';
   //$code_post = htmlspecialchars(trim($_POST['codpost'])).'%';
   //$ville = htmlspecialchars(trim($_POST['ville'])).'%';
   //$specialite = htmlspecialchars(trim($_POST['specialite'])).'%';
-}
-else{
-  $nom='%';
-}
+
+
 //
 function liste_typepra(&$nom){
 

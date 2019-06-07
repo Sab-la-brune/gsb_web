@@ -43,7 +43,7 @@ function liste_praticien(&$nom){
     //$sql->bindParam(':prenom',$adresse);
     //$sql->bindParam(':codpost',$code_post);
     //$sql->bindParam(':ville',$ville);
-    //$sql->bindParam(':specialite',$specialite);
+
     $sql->execute();
 
     //Affichage de la liste récupérée par la requête dans le tableau
@@ -79,6 +79,7 @@ function liste_praticien(&$nom){
     $sql->closeCursor();
 
   }catch(Exception $e){
+
 
     echo "Problème".$e->getMessage();
 
