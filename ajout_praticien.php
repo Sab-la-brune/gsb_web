@@ -10,8 +10,7 @@ include('test_connect.php');
 //Appel du fichier permettant l'affichage de la liste de praticiens
 include('liste_praticien.php');
 
-//$req_type= $bdd->query("SELECT * FROM type_praticien order by TYP_LIBELLE_TYPE_PRATICIEN asc");
-//$donnees_type = $req_type-> fetch();
+
 ?>
 
 
@@ -70,7 +69,7 @@ include('liste_praticien.php');
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 
-          <!--Tableau dans lequel s'afficheront les resultats de la recherche-->
+          <!--Formulaire à remplir pour l'jout d'un praticien-->
           <table class="table table-striped table-bordered table-hover">
             <div class="container">
               <div class="row">
